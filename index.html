@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local storage</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Todo </legend>
+        <legend>Name</legend>
+        <input type="text"  id="inpTodo">
+        <legend>Deadline </legend>
+        <input type="date"  id="inpDate">
+        <button id="btn" onclick="saveTodo()">submit</button>
+    </fieldset>
+
+    <fieldset>
+        <legend>All lists</legend>
+        <ol class="output"></ol>
+    </fieldset>
+
+
+    <script>
+        const inpName=document.getElementById('inpTodo');
+        const inpDate=document.getElementById('inpDate');
+        const btn=document.getElementById('btn');
+        const outputList=document.querySelector('.output');
+
+        function saveTodo(){
+            let name=inpName.value;
+            let date=inpDate.value;
+            
+            if(name&&date){
+                localStorage.setItem(name,date);
+                location.reload()
+            }
+        } 
+        
+        for (let i = 0; i < location.length; i++) {
+            const key=localStorage.key(i);
+            const value=localStorage.getItem(key);
+            outputList.innerHTML+=`<li>${name} ${date} </li><br/>`            
+        }
+
+    </script>
+</body>
+</html>
